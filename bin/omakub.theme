@@ -1,5 +1,5 @@
-THEME_NAMES=("Catppuccin" "Rose Pine")
-THEME=$(gum choose "${THEME_NAMES[@]}" "<< Back" --header "Choose your theme" --height 10 | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+#!/bin/bash -e
+THEME=$(echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
 
 if [ -n "$THEME" ] && [ "$THEME" != "<<-back" ]; then
   cp $OMAKUB_PATH/themes/$THEME/alacritty.toml ~/.config/alacritty/theme.toml
@@ -14,18 +14,15 @@ if [ -n "$THEME" ] && [ "$THEME" != "<<-back" ]; then
     sed -i "s/color_theme = \".*\"/color_theme = \"Default\"/g" ~/.config/btop/btop.conf
   fi
 
-  source $OMAKUB_PATH/themes/$THEME/gnome.sh
   source $OMAKUB_PATH/themes/$THEME/tophat.sh
   source $OMAKUB_PATH/themes/$THEME/vscode.sh
   [ -f "$OMAKUB_PATH/defaults/theme.other.sh" ] && rm -f "$OMAKUB_PATH/defaults/theme.other.sh"
   [ -f "$OMAKUB_PATH/themes/$THEME/other.sh" ] && {
-    mkdir -p "$OMAKUB_PATH/defaults"
     cp "$OMAKUB_PATH/themes/$THEME/other.sh" "$OMAKUB_PATH/defaults/theme.other.sh"
   }
+  source $OMAKUB_PATH/themes/$THEME/gnome.sh
 
   # Forgo setting the Chrome theme until we might find a less disruptive way of doing it.
   # Having to quit Chrome, and all Chrome-based apps, is too much of an inposition.
   # source $OMAKUB_PATH/themes/$THEME/chrome.sh
 fi
-
-source $OMAKUB_PATH/bin/omakub-sub/menu.sh

@@ -3,3 +3,11 @@ source ~/.local/share/omakub/defaults/bash/aliases
 source ~/.local/share/omakub/defaults/bash/functions
 source ~/.local/share/omakub/defaults/bash/prompt
 source ~/.local/share/omakub/defaults/bash/init
+[ -f "$OMAKUB_PATH/defaults/theme.other.sh" ] && source "$OMAKUB_PATH/defaults/theme.other.sh"
+
+source ~/.oh-my-zsh/custom/android-vars.zsh
+source ~/.oh-my-zsh/custom/jabba.zsh
+source ~/.oh-my-zsh/custom/tech-workspace-bins.zsh
+source ~/.oh-my-zsh/custom/notes.zsh
+
+PATH=~/.console-ninja/.bin:$PATH
