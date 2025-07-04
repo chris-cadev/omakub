@@ -9,5 +9,4 @@ source ~/.oh-my-zsh/custom/android-vars.zsh
 source ~/.oh-my-zsh/custom/jabba.zsh
 source ~/.oh-my-zsh/custom/tech-workspace-bins.zsh
 source ~/.oh-my-zsh/custom/notes.zsh
-
-PATH=~/.console-ninja/.bin:$PATH
+source ~/.oh-my-zsh/custom/docker-aliases.zsh
